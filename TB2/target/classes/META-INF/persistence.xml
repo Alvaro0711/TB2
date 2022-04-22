@@ -9,6 +9,7 @@
 		
 		<class>pe.edu.upc.entities.Paciente</class>
 		<class>pe.edu.upc.entities.Psicologo</class>
+		<class>pe.edu.upc.entities.Plan</class>
 		
 		<properties>
 

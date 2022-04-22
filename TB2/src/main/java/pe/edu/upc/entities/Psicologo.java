@@ -34,10 +34,10 @@ public class Psicologo {
 	@Column(name = "DNIPsicologo", nullable = false, length = 46)
 	private String DNIPsicologo;
 
-	@Column(name = "FechaInicioPsicologo", nullable = false)
+	@Column(name = "FechaInicioPsicologo", nullable = false, length = 47)
 	private Date FechaInicioPsicologo;
 	
-	@Column(name = "FechaFinalPsicologo", nullable = false)
+	@Column(name = "FechaFinalPsicologo", nullable = false, length = 47)
 	private Date FechaFinalPsicologo;
 
 	@Column(name = "Sueldo", nullable = false, length = 46)

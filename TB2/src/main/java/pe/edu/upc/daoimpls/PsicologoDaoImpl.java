@@ -15,6 +15,7 @@ public class PsicologoDaoImpl implements IPsicologoDao {
 	@PersistenceContext(unitName = "TB2")
 	private EntityManager em;
 
+	@Transactional
 	@Override
 	public void insert(Psicologo ps) {
 		try {
@@ -30,7 +31,7 @@ public class PsicologoDaoImpl implements IPsicologoDao {
 	public List<Psicologo> List() {
 		List<Psicologo> listaPsicologos = new ArrayList<Psicologo>();
 		try {
-			Query jpql = em.createQuery("from Paciente p");
+			Query jpql = em.createQuery("from Psicologo p");
 			listaPsicologos = (List<Psicologo>) jpql.getResultList();
 
 		} catch (Exception e) {

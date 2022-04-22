@@ -34,7 +34,7 @@ public class Paciente {
 	@Column(name = "DNIPaciente", nullable = false, length = 46)
 	private String DNIPaciente;
 
-	@Column(name = "FechaPaciente", nullable = false)
+	@Column(name = "FechaPaciente", nullable = false, length = 46)
 	private Date FechaPaciente;
 
 	@Column(name = "AnotacionesPaciente", nullable = false, length = 46)
