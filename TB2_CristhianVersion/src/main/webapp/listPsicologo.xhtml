@@ -1,0 +1,72 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+
+		<h2>Lista de Psicologos</h2>
+		<h:form>
+			<p:dataTable id="lstPsicologo"
+				value="#{psicologoController.listaPsicologos}" var="ps"
+				paginator="true" paginatorPosition="Top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen psicologos en la base de datos">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{ps.idPsicologo}" />
+				</p:column>
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{ps.nombrePsicologo}" />
+				</p:column>
+
+				<p:column headerText="Apellido">
+					<h:outputText value="#{ps.apellidoPsicologo}" />
+				</p:column>
+
+				<p:column headerText="Celular">
+					<h:outputText value="#{ps.celularPsicologo}" />
+				</p:column>
+
+				<p:column headerText="Correo">
+					<h:outputText value="#{ps.direccionPsicologo}" />
+				</p:column>
+
+				<p:column headerText="Sexo">
+					<h:outputText value="#{ps.sexoPsicologo}" />
+				</p:column>
+
+				<p:column headerText="DNI">
+					<h:outputText value="#{ps.DNIPsicologo}" />
+				</p:column>
+
+				<p:column headerText="Fecha de Inicio de Contrato">
+					<h:outputText value="#{ps.fechaInicioPsicologo}">
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+					</h:outputText>
+				</p:column>
+				
+				<p:column headerText="Fecha Final de Contrato">
+					<h:outputText value="#{ps.fechaFinalPsicologo}">
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Sueldo">
+					<h:outputText value="#{ps.sueldo}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listPsicologo" value="Eliminar"
+						actionListener="#{psicologoController.delete(ps)}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

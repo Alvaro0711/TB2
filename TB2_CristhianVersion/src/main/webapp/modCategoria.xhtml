@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+<head>
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"></link>
+</head>
+<ui:composition template="master.xhtml">
+
+	<ui:define name="content">
+		<h2>Modificar categoria</h2>
+		<h:form>
+			<h:outputLabel for="id" value="Id: " styleClass="control-label" />
+			<p:inputText id="id" styleClass="form-control"
+				value="#{categoriaController.ca.idCategoria}" maxlength="30"
+				required="true"></p:inputText>
+			<br />
+			<h:outputLabel for="Nombre" value="Nombre "
+				styleClass="control-label" />
+			<p:inputText id="Nombre" styleClass="form-control"
+				value="#{categoriaController.ca.nombre}" maxlength="30"
+				required="true" />
+			<br />
+
+			<h:outputLabel for="Descripcion" value="Descripcion "
+				styleClass="control-label" />
+			<p:inputText id="Descripcion" styleClass="form-control"
+				value="#{categoriaController.ca.descripcion}" maxlength="30"
+				required="true" />
+			<br />
+			<br />
+			<p:commandButton value="Actualizar"
+				actionListener="#{categoriaController.update()}"
+				action="listCategoria?faces-redirect=true" update="@form" />
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Crear foro</h2>
+		<h:form>
+			<h:outputLabel value="ID: " for="id" styleClass="control-label" />
+			<p:inputText value="#{foroController.fo.idForo}" id="id"
+				styleClass="form-control"></p:inputText>
+
+
+			<br />
+			<h:outputLabel for="Titulo" value="Titulo:  "
+				styleClass="control-label" />
+			<p:inputText id="Titulo" styleClass="form-control"
+				value="#{foroController.fo.tit}" maxlength="30" required="true" />
+			<br />
+
+			<br />
+			<h:outputLabel for="Asunto" value="Asunto:  "
+				styleClass="control-label" />
+			<p:inputText id="Asunto" styleClass="form-control"
+				value="#{foroController.fo.asun}" maxlength="30" required="true" />
+			<br />
+
+			<br />
+			<h:outputLabel for="Contenido" value="Contenido:  "
+				styleClass="control-label" />
+			<p:inputText id="Contenido" styleClass="form-control"
+				value="#{foroController.fo.conten}" maxlength="30" required="true" />
+			<br />
+
+
+			<br />
+			<h:outputLabel value="Fecha de Post: " for="FechaPost"
+				styleClass="control-label" />
+			<p:calendar id="FechaPost" pattern="dd/MM/yyyy"
+				value="#{foroController.fo.fechaposteo}" showOn="button"
+				timeZone="America/Mexico_City" required="true" />
+			<br />
+
+
+			<h:outputLabel value="Psicologo: " for="cboPsico"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPsico" value="#{foroController.fo.psico}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{foroController.listaPsicologos}" var="p"
+					itemLabel="#{p.nombrePsicologo}" itemValue="#{p}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Categoria: " for="cboCate"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboCate" value="#{foroController.fo.cate}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{foroController.listaCategorias}" var="c"
+					itemLabel="#{c.nombre}" itemValue="#{c}" />
+			</p:selectOneMenu>
+			<br />
+
+			<br />
+			<p:commandButton value="Grabar"
+				actionListener="#{foroController.insert()}"
+				action="listForo?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

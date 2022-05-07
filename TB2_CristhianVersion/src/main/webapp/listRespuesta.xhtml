@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+		<h2>Lista de Respuestas</h2>
+		<h:form>
+			<p:dataTable id="lstRespuestas" var="obj"
+				value="#{respuestaController.listaRespuestas}" paginator="true"
+				paginatorPosition="top" rowsPerPageTemplate="5,10,15,20,25"
+				rows="10" emptyMessage="No existen registros" rowIndexVar="item">
+
+
+				<p:column headerText="Id">
+					<h:outputText value="#{obj.idRespuesta}" />
+				</p:column>
+
+				<p:column headerText="Foro al que responde">
+					<h:outputText value="#{obj.foroo.tit}" />
+				</p:column>
+
+
+				<p:column headerText="Asunto">
+					<h:outputText value="#{obj.asun}" />
+				</p:column>
+
+				<p:column headerText="Contenido">
+					<h:outputText value="#{obj.conteni}" />
+				</p:column>
+
+				<p:column headerText="Fecha de publicación">
+					<h:outputText value="#{obj.fechaposteo}">
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+					</h:outputText>
+				</p:column>
+
+
+
+				<p:column headerText="Operación">
+					<h:commandLink action="#{respuestaController.preUpdate(obj)}"
+						value="Modificar" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listRespuesta"
+						actionListener="#{respuestaController.delete(obj)}">
+					Eliminar
+					</h:commandLink>
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+	</ui:define>
+	<ui:define name="footerCont">
+	</ui:define>
+</ui:composition>
+</html>

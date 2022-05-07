@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Cambiar Respuesta</h2>
+		<h:form>
+			<h:outputLabel value="ID: " for="id" styleClass="control-label" />
+			<p:inputText value="#{respuestaController.re.idRespuesta}" id="id"
+				styleClass="form-control"></p:inputText>
+
+
+			<br />
+			<h:outputLabel for="Asunto" value="Asunto:  "
+				styleClass="control-label" />
+			<p:inputText id="Asunto" styleClass="form-control"
+				value="#{respuestaController.re.asun}" maxlength="30"
+				required="true" />
+			<br />
+
+			<br />
+			<h:outputLabel for="Contenido" value="Contenido:  "
+				styleClass="control-label" />
+			<p:inputText id="Contenido" styleClass="form-control"
+				value="#{respuestaController.re.conteni}" maxlength="30"
+				required="true" />
+			<br />
+
+
+			<br />
+			<h:outputLabel value="Fecha de Post: " for="FechaPost"
+				styleClass="control-label" />
+			<p:calendar id="FechaPost" pattern="dd/MM/yyyy"
+				value="#{respuestaController.re.fechaposteo}" showOn="button"
+				timeZone="America/Mexico_City" required="true" />
+			<br />
+
+
+			<h:outputLabel value="Paciente: " for="cboPasi"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPasi" value="#{respuestaController.re.paci}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{respuestaController.listaPacientes}" var="p"
+					itemLabel="#{p.nombrePaciente}" itemValue="#{p}" />
+			</p:selectOneMenu>
+			<br />
+
+			<h:outputLabel value="Foro: " for="cboForo"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboForo" value="#{respuestaController.re.foroo}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{respuestaController.listaForos}" var="f"
+					itemLabel="#{f.tit}" itemValue="#{f}" />
+			</p:selectOneMenu>
+			<br />
+
+			<br />
+			<p:commandButton value="Cambiar"
+				actionListener="#{respuestaController.update()}"
+				action="listRespuesta?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
