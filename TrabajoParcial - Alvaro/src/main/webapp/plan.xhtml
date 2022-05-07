@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/master.xhtml">
+	<ui:define name="content">
+		<h2>Registro de Plan</h2>
+		<h:form>
+
+			<h:outputLabel value="Id" for="id" styleClass="control-label" />
+			<h:inputText value="#{planController.pl.idPlan}" id="id"
+				styleClass="form-control" />
+				
+			<h:outputLabel value="Titulo: " for="cboTitulo"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboTitulo" value="#{planController.pl.titulo}">
+				<f:selectItem itemLabel="Basico" itemValue="Basico" />
+				<f:selectItem itemLabel="Regular" itemValue="Regular" />
+				<f:selectItem itemLabel="Premiun" itemValue="Premiun" />
+			</p:selectOneMenu>
+
+			<p>
+				<h:outputLabel value="Problema" for="descripcion"
+					styleClass="control-label" />
+				<h:inputText value="#{planController.pl.descripcion}"
+					id="descripcion" styleClass="form-control" />
+			</p>
+			
+			<h:outputLabel value="Costo" for="costo" styleClass="control-label" />
+			<h:inputText value="#{planController.pl.costo}" id="costo"
+				styleClass="form-control" />
+
+			<h:outputLabel value="Moneda: " for="cboMoneda"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboMoneda" value="#{planController.pl.moneda}">
+				<f:selectItem itemLabel="Soles" itemValue="Soles" />
+				<f:selectItem itemLabel="Dolares" itemValue="Dolares" />
+				<f:selectItem itemLabel="Euros" itemValue="Euros" />
+			</p:selectOneMenu>
+			
+			<p>
+			<p:commandButton value="Grabar"
+				actionListener="#{planController.insert()}"
+				action="plan?faces-redirect=true">
+			</p:commandButton>
+			</p>
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+	<ui:composition template="master.xhtml">
+	<ui:define name="content">
+
+		<h2>Registro de Sucripciones</h2>
+		<h:form>
+			<h:outputLabel value="Codigo de Suscripción" for="id"
+				styleClass="control-label" />
+			<p:inputText value="#{suscripcionController.sus.idSus}"
+				id="id" styleClass="form-control"></p:inputText>
+
+			<h:outputLabel value="Paciente" for="cboPaciente"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPaciente"
+				value="#{suscripcionController.sus.paciente}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{suscripcionController.listaPacientes}"
+					var="pa" itemLabel="#{pa.nombrePaciente}" itemValue="#{pa}" />
+			</p:selectOneMenu>
+			
+			<h:outputLabel value="Plan" for="cboPlan"
+				styleClass="control-label" />
+			<p:selectOneMenu id="cboPlan"
+				value="#{suscripcionController.sus.plan}"
+				converter="omnifaces.SelectItemsConverter">
+				<f:selectItems value="#{suscripcionController.listaPlanes}" var="p"
+					itemLabel="#{p.titulo}" itemValue="#{p}" />
+			</p:selectOneMenu>
+
+			<h:outputLabel value="Fecha de Inscripción" for="fecha"
+				styleClass="control-label" />
+			<p:calendar id="fecha" pattern="dd/MM/yyyy"
+				value="#{suscripcionController.sus.fecha}" showOn="button"
+				timeZone="America/Mexico_City" required="true" />
+
+			<h:outputLabel value="Meses" for="meses"
+				styleClass="control-label" />
+			<h:inputText value="#{suscripcionController.sus.meses}"
+				id="meses" styleClass="form-control" />
+				
+			<p:commandButton value="Grabar"
+				actionListener="#{suscripcionController.insert()}"
+				action="suscripcion?faces-redirect=true" update="@form"
+				styleClass="btn btn-primary" />
+
+		</h:form>
+	</ui:define>
+	</ui:composition>
+</html>

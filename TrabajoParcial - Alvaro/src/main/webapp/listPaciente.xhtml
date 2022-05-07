@@ -1,0 +1,82 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="master.xhtml">
+	<ui:define name="content">
+
+		<h2>Lista de Pacientes</h2>
+		<h:form>
+
+			<div class="row">
+				<h:outputLabel value="Ingrese el nombre del paciente a buscar: "
+					form="name" styleClass="control-label" />
+				<p:inputText id="name"
+					value="#{pacienteController.p.nombrePaciente}" />
+				<p:commandButton value="Buscar" update="lstPaciente"
+					actionListener="#{pacienteController.BuscarNombre()}" />
+			</div>
+
+			<p:dataTable id="lstPaciente"
+				value="#{pacienteController.listaPacientes}" var="pe"
+				paginator="true" paginatorPosition="Top"
+				rowsPerPageTemplate="5,10,15,20,25" rows="5" rowIndexVar="item"
+				emptyMessage="No existen pacientes en la base de datos">
+
+				<p:column headerText="Id">
+					<h:outputText value="#{pe.idPaciente}" />
+				</p:column>
+
+				<p:column headerText="Nombre">
+					<h:outputText value="#{pe.nombrePaciente}" />
+				</p:column>
+
+				<p:column headerText="Apellido">
+					<h:outputText value="#{pe.apellidoPaciente}" />
+				</p:column>
+
+				<p:column headerText="Celular">
+					<h:outputText value="#{pe.celularPaciente}" />
+				</p:column>
+
+				<p:column headerText="Correo">
+					<h:outputText value="#{pe.direccionPaciente}" />
+				</p:column>
+
+				<p:column headerText="Sexo">
+					<h:outputText value="#{pe.sexoPaciente}" />
+				</p:column>
+
+				<p:column headerText="DNI">
+					<h:outputText value="#{pe.DNIPaciente}" />
+				</p:column>
+
+				<p:column headerText="Fecha de Registro">
+					<h:outputText value="#{pe.fechaPaciente}">
+						<f:convertDateTime pattern="dd-MM-yyyy" timeZone="UTC" />
+					</h:outputText>
+				</p:column>
+
+				<p:column headerText="Anotaciones">
+					<h:outputText value="#{pe.anotacionesPaciente}" />
+				</p:column>
+
+				<p:column headerText="Operación">
+					<h:commandLink action="listPaciente" value="Eliminar"
+						actionListener="#{pacienteController.delete(pe)}" />
+				</p:column>
+
+				<p:column headerText="Modificar">
+					<h:commandLink action="#{pacienteController.preUpdate(pe)}"
+						value="Modificar" />
+				</p:column>
+
+			</p:dataTable>
+
+		</h:form>
+	</ui:define>
+</ui:composition>
+</html>
