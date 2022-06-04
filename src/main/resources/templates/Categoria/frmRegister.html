@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<form th:action="@{/categorias/guardar}" method="post"
+				th:object="${c}">
+				
+				
+				<div class="col-sm-5">
+					<label class="form-label">Nombre: </label> <input type="text" maxlength="50"
+						class="form-control" th:field="*{Nombre}" required></input>
+				</div>
+				
+				<div class="col-sm-5">
+					<label class="form-label">Descripcion: </label> <input type="text" maxlength="100"
+						class="form-control" th:field="*{Descripcion}" required></input>
+				</div>
+				
+				<div class="col-sm-5" >
+					<input type="submit" class="btn btn-dark" value="Crear"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

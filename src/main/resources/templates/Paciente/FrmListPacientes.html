@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Nombres</th>
+							<th>Apellidos</th>
+							<th>Celular</th>
+							<th>Direccion</th>
+							<th>Sexo</th>
+							<th>DNI</th>
+							<th>Fecha</th>
+							<th>Anotaciones</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pa:${listaPacientes}">
+							<td th:text="${pa.idPaciente}"></td>
+							<td th:text="${pa.nombrePaciente}"></td>
+							<td th:text="${pa.apellidoPaciente}"></td>
+							<td th:text="${pa.celularPaciente}"></td>
+							<td th:text="${pa.direccionPaciente}"></td>
+							<td th:text="${pa.sexoPaciente}"></td>
+							<td th:text="${pa.dNIPaciente}"></td>
+							<td th:text="${pa.fechaPaciente}"></td>
+							<td th:text="${pa.anotacionesPaciente}"></td>
+							<td><a th:href="@{/pacientes/eliminar?id=}+${pa.idPaciente}">
+									Eliminar</a></td>
+							<td><a
+								th:href="@{'/pacientes/irmodificar/' + ${pa.idPaciente}}">
+									Actualizar</a></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+	Formulario de actualizacion
+	<div class="container">
+		<div>
+			<form th:action="@{/foros/modificar}" method="post"
+				th:object="${f_mod}">
+
+				<div class="col-sm-5">
+					<label class="form-label">ID: </label> <input type="text"
+						readonly="readonly" class="form-control" th:field="*{idForo}"
+						required></input>
+				</div>
+
+
+				<div class="col-sm-5">
+					<label class="form-label">Categoria: </label> <select
+						name="selectCategoria" class="form-control"
+						th:field="*{categoria.idCategoria}">
+						<option th:each="cate:${listaCategorias}" th:value="${cate.idCategoria}"
+							th:text="${cate.Nombre}"
+							th:selected="(${cate.idCategoria}==*{categoria.idCategoria})"></option>
+					</select>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Titulo: </label> <input type="text"
+						maxlength="50" class="form-control" th:field="*{Titulo}" required></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Asunto: </label> <input type="text"
+						maxlength="100" class="form-control" th:field="*{Asunto}" required></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Contenido: </label> <input type="text"
+						maxlength="100" class="form-control" th:field="*{Contenido}"
+						required></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Fecha de Post: </label> <input
+						type="date" class="form-control" th:field="*{FechaPost}" required></input>
+				</div>
+
+				<div class="col-sm-5">
+					<label class="form-label">Autor: </label> <select
+						name="selectPsicologo" class="form-control"
+						th:field="*{psicologo.idPsicologo}">
+						<option th:each="psicol:${listaPsicologos}" th:value="${psicol.idPsicologo}"
+							th:text="${psicol.NombrePsicologo}"
+							th:selected="(${psicol.idPsicologo}==*{psicologo.idPsicologo})"></option>
+					</select>
+				</div>	
+
+
+
+				<div class="col-sm-5">
+					<input type="submit" class="btn btn-dark" value="Actualizar"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>Id Foro</th>
+							<th>Autor</th>
+							<th>Categoria</th>
+							<th>Titulo</th>
+							<th>Asunto</th>
+							<th>Contenido</th>
+							<th>Fecha</th>
+							<th>Operación</th>
+							<th>Operación</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="f:${listaForos}">
+							<td th:text="${f.idForo}"></td>
+							<td th:text="${f.psicologo.NombrePsicologo}"></td>
+							<td th:text="${f.categoria.Nombre}"></td>
+							<td th:text="${f.Titulo}"></td>
+							<td th:text="${f.Asunto}"></td>
+							<td th:text="${f.Contenido}"></td>
+							<td th:text="${f.FechaPost}"></td>
+
+
+							<td><a th:href="@{/foros/eliminar?id=}+${f.idForo}">
+									Eliminar </a></td>
+							<td><a th:href="@{'/foros/irmodificar/'+${f.idForo}}">
+									Actualizar (Bug) </a></td>
+
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

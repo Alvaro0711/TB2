@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="master/master :: head">
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<form th:action="@{/respuestas/guardar}" method="post"
+				th:object="${r}">
+				
+				<div class="col-sm-5">
+					<label class="form-label">Foro: </label> <select
+						name="selectForo" class="form-control"
+						th:field="*{foro.idForo}">
+						<option th:each="fo:${listaForos}" th:value="${fo.idForo}"
+							th:text="${fo.Titulo}"
+							th:selected="(${fo.idForo}==*{foro.idForo})"></option>
+					</select>
+				</div>
+								
+				<div class="col-sm-5">
+					<label class="form-label">Asunto: </label> <input type="text" maxlength="100"
+						class="form-control" th:field="*{Asunto}" required></input>
+				</div>
+				
+				<div class="col-sm-5">
+					<label class="form-label">Contenido: </label> <input type="text" maxlength="100"
+						class="form-control" th:field="*{Contenido}" required></input>
+				</div>
+				
+				<div class="col-sm-5">
+					<label class="form-label">Fecha de Post: </label> <input
+						type="date"  class="form-control" th:field="*{FechaPost}" required></input>
+				</div>
+				
+				<div class="col-sm-5">
+					<label class="form-label">Autor: </label> <select
+						name="selectPacientes" class="form-control"
+						th:field="*{paciente.idPaciente}">
+						<option th:each="pac:${listaPacientes}" th:value="${pac.idPaciente}"
+							th:text="${pac.NombrePaciente}"
+							th:selected="(${pac.idPaciente}==*{paciente.idPaciente})"></option>
+					</select>
+				</div>	
+				
+				
+				<div class="col-sm-5">
+					<input type="submit" class="btn btn-dark" value="Crear"></input>
+				</div>
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>
