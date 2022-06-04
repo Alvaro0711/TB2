@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+	<h2>Suscripcion</h2>
+		<div>
+			<form th:action="@{/suscripciones/guardar}" method="post"
+				th:object="${sus}">
+
+				<div class="col-sm-12">
+					<label class="form-label">Paciente:</label> <select
+						name="selectPaciente" class="form-control"
+						th:field="*{paciente.idPaciente}">
+						<option th:each="pa:${listaPacientes}" th:value="${pa.idPaciente}"
+							th:text="${pa.nombrePaciente}"
+							selected="(${pa.idPaciente}==*{paciente.idPaciente})"></option>
+					</select>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Plan:</label> <select name="selectPlan"
+						class="form-control" th:field="*{plan.idPlan}">
+						<option th:each="pl:${listaPlanes}" th:value="${pl.idPlan}"
+							th:text="${pl.titulo}" selected="(${pl.idPlan}==*{plan.idPlan})">
+						</option>
+					</select>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha: </label> <input type="date"
+						class="form-control" th:field="*{fecha}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Meses: </label> <input
+						type="text" class="form-control" th:field="*{meses}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" class="btn btn-dark" value="Registrar"></input>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

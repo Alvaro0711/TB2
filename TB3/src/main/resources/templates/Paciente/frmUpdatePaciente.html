@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<form th:action="@{/pacientes/modificar}" method="post"
+				th:object="${psa}">
+				
+				<div class="col-sm-12">
+					<label class="form-label">Nombres: </label> <input type="text"
+						class="form-control" th:field="*{nombrePaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Apellidos: </label> <input type="text"
+						class="form-control" th:field="*{apellidoPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Celular: </label> <input type="text"
+						class="form-control" th:field="*{celularPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Direccion: </label> <input type="text"
+						class="form-control" th:field="*{direccionPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Sexo: </label> <input type="text"
+						class="form-control" th:field="*{sexoPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">DNI: </label> <input type="text"
+						class="form-control" th:field="*{dNIPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<label class="form-label">Fecha: :</label> <input
+						type="date" class="form-control" th:field="*{fechaPaciente}"></input>
+				</div>
+				
+				<div class="col-sm-12">
+					<label class="form-label">Anotaciones: :</label> <input
+						type="text" class="form-control" th:field="*{anotacionesPaciente}"></input>
+				</div>
+
+				<div class="col-sm-12">
+					<input type="submit" class="btn btn-dark" value="Actualizar"></input>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+</body>
+</html>

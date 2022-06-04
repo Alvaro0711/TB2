@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+	<h2>Boleta</h2>
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Paciente</th>
+							<th>Plan</th>
+							<th>Fecha</th>
+							<th>Meses</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="sus:${listaSuscripciones}">
+							<td th:text="${sus.idSus}"></td>
+							<td th:text="${sus.paciente.nombrePaciente}"></td>
+							<td th:text="${sus.plan.titulo}"></td>
+							<td th:text="${sus.fecha}"></td>
+							<td th:text="${sus.meses}"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

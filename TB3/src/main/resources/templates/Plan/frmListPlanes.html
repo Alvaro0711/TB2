@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http//www.thymeleaf.org">
+
+<head th:replace="master/master :: head">
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+	<header th:replace="master/master :: header"></header>
+
+	<div class="container">
+		<div>
+			<div class="table-responsive">
+				<table class="table table-white">
+					<thead>
+						<tr>
+							<th>ID</th>
+							<th>Titulo</th>
+							<th>Descripcion</th>
+							<th>Costo</th>
+							<th>Moneda</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr th:each="pl:${listaPlanes}">
+							<td th:text="${pl.idPlan}"></td>
+							<td th:text="${pl.titulo}"></td>
+							<td th:text="${pl.descripcion}"></td>
+							<td th:text="${pl.costo}"></td>
+							<td th:text="${pl.moneda}"></td>
+							<td><a th:href="@{/planes/eliminar?id=}+${pl.idPlan}">
+									Eliminar</a></td>
+						</tr>
+					</tbody>
+
+				</table>
+
+			</div>
+		</div>
+
+	</div>
+
+</body>
+</html>
